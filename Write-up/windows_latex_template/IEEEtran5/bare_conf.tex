@@ -1,0 +1,573 @@
+
+%% bare_conf.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%% bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do ***
+% *** not appear when using other class files. ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[conference]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+% % pdf code
+% \else
+% % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+% declare the path(s) where your graphic files are
+% \graphicspath{{../pdf/}{../jpeg/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+% \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+% or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+% will default to the driver specified in the system graphics.cfg if no
+% driver is specified.
+% \usepackage[dvips]{graphicx}
+% declare the path(s) where your graphic files are
+% \graphicspath{{../eps/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+% \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{subfig}
+\usepackage{tabularx}
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+\usepackage[mathscr]{euscript}
+\usepackage{bbm}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex). ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{User preference modeling using Temporal Hypergraphs}
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+%\author{
+%\IEEEauthorblockN{Jaideep Srivastava}
+%\IEEEauthorblockA{Dept. of Computer Science\\
+%University of Minesota\\
+%Minneapolis, Minnesota\\
+%Email: srivasta@cs.umn.edu}
+%}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
+\maketitle
+
+\begin{abstract}
+
+Personalized recommendations based upon previous behavioral and personal data of a user is an increasingly important problem. Specially, with internet becoming ubiquitious in tandem with ongoing enhancements in human computer interaction, the amount of fine grained user data like social interaction, group interaction, user-item/ user-user transaction data, etc. is ever increasing and therefore, posing new challanges in modelling user preferences. This work aims to model evolving user behavior using Hypergraphs which have been proposed as an effective tool to capture such complex higher order user relationships with multiple entities (like users, items, etc) involved.  Most of the current hypergraph based models lack the temporal dimension which is an essentially important aspect, specially when modeling user preferences which are inheretly variable over time.We are proposing a hypergraph label propagation approach with temporal regularization framework which is shown to be easily adaptable to capture various domain constraints through penalization. Given a previous user transaction and interaction history the model rank the various items for a queried user.
+
+\end{abstract}
+
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the conference you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals/conferences frown on
+% math in the abstract anyway.
+
+% no keywords
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+
+MMOG game network consists of different kind of nodes like player nodes and item nodes. Players can participate in different kind of activities like item buying and thus building trade relations, trust relations, group relation, etc. We model these relationships as hyper-edges (eg: item-buying, trust, trade, group, etc) of a hyper-graph which is bi-modal i.e. contain two types of vertices: users (player) and items. Therefore, if we splits the past relationship and transaction data available into smaller time-steps then we arrive at snapshot of this hyper-graph in various time instances in past. Our aim is to comprehend users preference for the various items. We are proposing a hypergraph label propagation approach with temporal regularization and simultaneously capturing various domain constraints through penalization. This approach reveals the ranks for the various items nodes for a particular queried user.
+
+\section{Problem}
+
+We denote the hypergraph for the snapshot $t=t_k$ using the incidence matrix $H(t_k)=\{E(t_k),V(t_k)\}$. ${E(t_k)}$ is the set of hyper-edges in the hyper-graph during the time $t=t_k$ over the vertices $V(t_k)$. Let \(f_i(t_k)\) denote the rank of a verterx \(v_i\) (irrespective of item or user vertex) and \(y_i\) is the initial label assigned of a vertex \(v_i\). We therefore have a vector of intial lablels \(\mathbf{y} = [y_1,y_2,.......y_n]\) which we refer to as the query vector. (Note that we shall only initialize either a particular node or a node and its friends or a very small subset of nodes with respect to whom we want to find out the ranking of item nodes) Our aim is to find out the ranking vector \(\mathbf{f} = [f_1,f_2,......,f_n]\) of other nodes with respect to this initial label vector. Out of this complete rank vector the rank of the item nodes shall give the likeliness of an item being bought in future by a user (described by the query vector).
+
+We shall now present the regularization framework that we use to propagate the initial label vector to come up with the rankings. We are trying to solve the problem on very similar lines to that of [1] while extending it to temporal dynamic setting and enco-operating domain level constraints as well. The cost function is shown in the equation $(1)$ where \(m\) is the number of snapshots we took of the data over time, \(\delta(e,t_k)\) is the degree of hyperedge \(e\), \(w(e,t_k)\) is the weight of hyperedge \(e(t_k)\) and \(d(v_i,t_k)\) is the degree of a vertex \(v_i(t_k)\) which is nothing but the number of edges of which this vertex is a part of. These values of weights are quiet domain dependent and degree of a hyperedge is the number of other hyperedges it is overlapping with.
+
+
+\begin{equation}
+\begin{align}
+
+Q(\mathbf{f}) = \overset{m}{\underset{k=1}{\sum}} \left ( \frac{1}{2} \overset{n}{\underset{i,j=1}{\sum}} \underset{e \in E}{\sum} \frac{1}{\delta(e,t_k)} \right. \\ \left. \underset{ \{v_i(t_k), v_j(t_k) \}{ \subseteq w(e,t_k)}}{\sum} \left \| \frac{f_i(t_i)}{\sqrt{d(v_i,t_k)}} - \frac{f_j(t_i)}{\sqrt{d(v_j,t_k)}} \right \|^{2} \right ) \\ + \overset{m}{\underset{k=1}{\sum}} \left( \mu \overset{n}{\underset{i=1}{\sum}} \left\|f_i(t_k) - y_i(t_k)\right\|^{2} \right ) 
+
+\end{align}
+\end{equation}
+
+The above cost function contains three terms of which the second term is the penalization if the predicted label is not same as the initial labels assigned. The first terms comes from the hypergraph label propagation literature \cite{Zhou06} and has been recurrently used across literature in several papers [1]\cite{kuang08}. The second term basically checks that the nodes whose labels or ranks we know should indeed have the same ranks and the first term makes sure that two vertices’ that share many hyperedges (like many people buying the same item hyperedge or are being a part of same group hyperedge) are likely to have similar rankings. Note that the outer most summation (over all snapshots) in both the first and the second terms makes sure that this regularization is enforced in each snapshot. Another thing to observe is that the first and the second terms enforce regularization within the hypergraph snapshot of particular interval. Therefore, we add a third term which enforces constraint across snapshots. Previous work in the area of recommendation systems \cite{koren10} in temporal settings suggests that if a particular user $v_i(t_k)$ buys an item $I_a$ then he somehow inherits the personality or share the preferences with a user who bought the same item in some previous snapshot. We incooperate this by constraining the labels of the items same across the snapshots and adding a linear decay in the preference of the user (i.e. rank of the user vertex). These both things are simuntaneously captured in the third term. 
+
+Our aim is therefore to minimize our cost function $Q(\mathbf{f})$. Note that $\mathbf{f} = \{ \mathbf{f}_1,\mathbf{f}_2, ..., \mathbf{f}_m\}$ where each $\mathbf{f}_k$ being the rank of all the vertices in snapshot $t_k$. Therefore the variables are $\mathbf{f}$ and $\alpha$. The optimal ranking is given by the ranking of the item vertices in the final snapshot ($t_m$). Writing in a more compat format the cost fucntion for each $\mathbf{f}_{t_k}$ becomes:
+
+\begin{equation}
+\begin{align}
+Q(\mathbf{f}) = \sum_{k=0}^{m} Q(\mathbf{f_{t_k}})
+\end{align}
+\end{equation}
+
+where, 
+\begin{equation}
+\begin{align}
+Q(\mathbf{f}_{t_k}) = \mathbf{f}_{t_k}^{T}(\mathbf{I} - \mathbf{(D_v)_{t_k}^{-1/2}}\mathbf{H_{t_k}}\mathbf{W_{t_k}}\mathbf{(D_e)_{t_k}^{-1}}\mathbf{H_{t_k}^{T}}\mathbf{(D_v)_{t_k}^{-1/2})} \mathbf{f}_{t_k} \\ + \mu (\mathbf{f}_{t_k} - \mathbf{y}_{t_k})^{T} (\mathbf{f}_{t_k} - \mathbf{y}_{t_k}) \\ + \gamma (\mathbf{f}_{t_k} - \mathbf{f}_{t_{k-1}} - \alpha \mathbf{j}_{user})^{T} (\mathbf{f}_{t_k} - \mathbf{f}_{t_{k-1}} - \alpha \mathbf{j}_{user}), 
+\end{align}
+\end{equation}
+
+represents the cost for the snapshot at $t=t_k$. Note that at $t=0$ the third term shall be zero as there is no previous snapshot left to put this constrain against.
+$\mathbf{j}_{user}$ is a vector indicating which are vertices are user vertices and which are item or non-user i.e. $\mathbf{j}_{user}(i)=1$ if $v_i $ is a user vertex and the total number of vertices is the length of this vector. Given that we have to minimize over a vector $\mathbf{f}$ which is natuarally divided into $m$ subsets for each of the snapshots and a scaler $\alpha$, making alternate optimization \cite{Bezdek02} a natural choice. (Alternate optimization has been used in case of two variables in context of hypergraph label propogation by \cite{kuang09}) It can be easily shown that $Q(\mathbf{f}_{t_k})$ is convex (quadratic) with respect to $\mathbf{f}_{t_k}$ and also $Q(\mathbf{f})$ convex (quadratic) with respect to $\alpha$. Taking gradient with respect to $\mathbf{f_t}$, 
+
+\begin{equation}
+\begin{align}
+\frac{dQ}{d\mathbf{f}_{t_k}} = (\mathbf{I} - \Delta^{'}_{t_k})\mathbf{f}_{t_k} + \mu(\mathbf{f}_{t_k} - \mathbf{y}_{t_k}) \\ + \gamma(\mathbf{f}_{t_k}-\mathbf{f}_{t_{k-1}}-\alpha \mathbf{j}_{user}) = 0
+\end{align}
+\end{equation}
+
+where
+\begin{equation}
+\Delta^{'}_{t_k}=\mathbf{(D_v)_{t_k}^{-1/2}}\mathbf{H_{t_k}}\mathbf{W_{t_k}}\mathbf{(D_e)_{t_k}^{-1}}\mathbf{H_{t_k}^{T}}\mathbf{(D_v)_{t_k}}^{-1/2} 
+\end{equation}
+
+The solution to the above is a solution to the linear equation,
+
+\begin{equation}
+\begin{align}
+\mathbf{f_{t_k}} = ( (1+\mu+\gamma)\mathbf{I} -\Delta_{t_k}^{'})^{-1}(\mu \mathbf{y}_{t_k} + \gamma \mathbf{y}_{t_{k-1}} + \gamm \alpha \mathbf{j}_{user})
+\end{align}
+\end{equation}
+
+with the recursive iteration for inverse calculation being: 
+
+\begin{equation}
+\begin{align}
+\mathbf{f_{t_k}} = (\Delta_{t_k}^{'} -(\mu+\gamma)\mathbf{I}) \mathbf{f_{t_k}} + \mu \mathbf{y}_{t_k} + \gamma \mathbf{y}_{t_{k-1}} + \gamm \alpha \mathbf{j}_{user}
+\end{align}
+\end{equation}
+
+Similarly, gradient with respect to $\alpha$ is :
+
+\begin{equation}
+\begin{align}
+\frac{dQ}{d\alpha} = -\gamma \sum_{k=2}^{m} (\mathbf{f}_{t_k} - \mathbf{f}_{t_{k-1}} - \alpha \mathbf{j}_{user}) = 0,
+\end{align}
+\end{equation}
+
+which results in:
+
+\begin{equation}
+\begin{align}
+\alpha = \frac{1}{(m-1)} \frac{ \sum_{k=2}^{m} (\mathbf{f}_{t_k} - \mathbf{f}_{t_{k-1}})}{\mathbf{j}_{user}},
+\end{align}
+\end{equation}
+
+The algorithm for the proposed optimization is shown below. For every $k$ we have $\mathbf{y}_{t_k}$ initialized to 1 at the index of the current query user and zero otherwise.
+
+\begin{algorithm} % enter the algorithm environment
+\caption{HYPER-TEMPORAL-RECOM (${H_{t_1}, ... H_{t_m}}$, ${W_{t_1}, ... W_{t_m}}$, $\mathbf{j}_{user}$, $\mathbf{y}_{t_k}$)} % give the algorithm a caption
+\label{alg2} % and a label for \ref{} commands later in the document
+\begin{algorithmic} % enter the algorithmic environment
+
+\STATE Calculate $\mathbf{(D_v)_{t_k}}$ and $\mathbf{(D_e)_{t_k}}$.
+\STATE $z=0$, initialize $\mathbf{f_{t_k}}$ randomly, $\alpha=1$
+
+\REPEAT
+\STATE $z=z+1$
+
+\FOR{$k \in \{1,2,...,m\}$}
+
+\begin{itemize}
+\item{Find $\mathbf{f_{t_k}}$ using the equation (6) indirectly using methods like jacobi iterations for inverse calculation using the iteration (7). The values for $\mathbf{f_{t_p}}$ for $p \neq k$ should be taken from the (z-1) iteration.}
+\end{itemize}
+
+\ENDFOR \\
+
+\begin{itemize}
+\item{Find $\alpha$ using the equation (9) and the values for $\mathbf{f_{t_p}}$ for $p \neq k$ should be taken from the $(z-1)^{th}$ iteration.}
+\item{Calculate the current cost $q_z$ using the equation (3).}
+\end{itemize}
+
+\UNTIL{$(q_z-q_{z-1}) >\epsilon} 
+
+\RETURN $\mathbf{f_{t_m}}$
+
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{thebibliography}{1}
+
+\bibitem{lamport94}
+Bu, Jiajun and Tan, Shulong and Chen, Chun and Wang, Can and Wu, Hao and Zhang, Lijun and He, Xiaofei,
+\emph{Music recommendation by unified hypergraph: combining social media information and music content}.
+In Proceedings of the international conference on Multimedia (MM '10). ACM, New York, NY, USA, 391-400.
+
+\bibitem{kuang08}
+TaeHyun Hwang, Ze Tian, Jean-Pierre Kocher, and Rui Kuang. \emph{Learning on Weighted Hypergraphs to Integrate Protein Interactions and Gene Expressions for Cancer Outcome Prediction},Proc. of Eighth IEEE International Conference on Data Mining (ICDM), pages 293-302, 2008.
+
+\bibitem{kuang09}
+Ze Tian, TaeHyun Hwang and Rui Kuang. \emph{A Hypergraph-based Learning Algorithm for Classifying Gene Expression and ArrayCGH Data with Prior Knowledge}, Bioinformatics, Vol. 25, No. 21, pages: 2831-2838, 2009. 
+
+\bibitem{koren10}
+Koren, Yehuda. \emph{Collaborative filtering with temporal dynamics.} Communications of the ACM 53.4 (2010): 89-97.
+
+\bibitem{Bezdek02}
+Bezdek, James C., and Richard J. Hathaway. \emph{Some notes on alternating optimization.} Advances in Soft Computing—AFSS 2002. Springer Berlin Heidelberg, 2002. 288-300.
+
+\bibitem{Zhou06}
+Zhou, Dengyong, Jiayuan Huang, and Bernhard Schölkopf. \emph{Learning with hypergraphs: Clustering, classification, and embedding.} Advances in Neural Information Processing Systems. 2006.
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+

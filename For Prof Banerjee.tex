@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+%\documentclass[9pt,technote]{IEEEtran}
+%\documentclass[11pt]{Thesis}
+\usepackage{color}
+\usepackage{times}
+%\usepackage[pdfmark,colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%\title{A Heuristic Coconut-based Algorithm}
+\title{Temporal Social Regularization in Hypergraphs}
+\author{Ankit Sharma}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+
+\begin{document} 
+\maketitle
+
+
+\section{Problem}
+
+We have a MMOG game network which consists of different kind of nodes like player nodes and item nodes. Players can participate in different kind
+of activities like item buying and thus building trade relations, trust relations, group relation, etc. Thus, we model these relationships as hyper-edges of a hyper-graph. Given \(f_i\) is the rank of a node \(i\) and \(y_i\) is the actual ground truth value of a node \(i\). Now given a vector of reference nodes \(\mathbf{y} = [y_1,y_2,.......y_n]\)  (Note that we shall only initialize either a particular node or a node and its friends or a very small subset of nodes with respect to whom we want to find out the ranking of other nodes) our aim is to find out the ranking vector \(\mathbf{f} = [f_1,f_2,......,f_n]\) of other nodes with respect to this reference initial vector. This rank of the item nodes shall give the likeliness of an item being bought in future by a person (query node \(y_i\)) in coming time. As you can see we are only interested in the ranks of nodes of type item.\\
+
+Now we are trying to solve the problem on very similar lines to that of [1] by coming up with a regularization frame work. Now, let me briefly show the regularization framework portrayed in [1] as an objective function that needed to be minimized. (For a more fine grained detai,l the section 3 of [1] should be suffice.) The following is the cost function: \\ 
+
+ Q(f) = \( \frac{1}{2} \overset{n}{\underset{i,j=1}{\sum}} \underset{e \in E}{\sum} \frac{1}{\delta(e)} \underset{ \{v_i, v_j \}{ \subseteq w(e)}}{\sum}  \left \|  \frac{f_i}{\sqrt{d(v_i)}} - \frac{f_j}{\sqrt{d(v_j)}}  \right \|^{2} + \mu \overset{n}{\underset{i=1}{\sum}} \left\|f_i - y_i\right\|^{2} \) \\
+
+and the optimal ranking is given by  \(f^{*} = arg \underset{f}{min}  Q(f)\).\\ Note that \(\delta(e)\) is the degree of hyperedge \(e\), \(w(e)\) is the weight of hyperedge \(e\) and \(d(v_i)\) is the degree of a vertex \(v_i\) which is nothing but the number of edges of which this vertex is a part of. These values of weights are quiet domain dependent and degree of a hyperedge is the number of other hyperedges it is overlapping with. A succinct intuition about the above equation is that the second term checks that the nodes whose labels or ranks we know should indeed have the same ranks and the first term makes sure that two vertices's  that share many hyperedges (like many people buying the same item hyperedge or are being a part of same group hyperedge) are likely to have similar rankings. \\
+
+Now the above regularization has no temporal aspect. Thus, our next aim is to bring in temporal regularization. We look forward to get a direction in this front as in what is the best way to go for temporal regularization. Now let us describe the temporal problem that we have worked out up till now is as follows. Each of the \(f_{i}\) is now \(f_{i}(t)\) which can take discrete as well as continuous time steps. Similarly, we have \(y_i(t)\), \(\delta(e,t)\), \(w(e,t)\) and \(d(v_i,t)\). Apart from this we have one important domain information that the \(f_i\) is linearly smooth over time for \(i \in \{item\_type\_vertices\}\). This basically means that the rating of items for a particular user decreases over time. Therefore, \(f_i(t) = f_i(t_0) + \alpha (t-t_0)\) and has been borrowed from recommendation literature [2]. Though if for the time being we ignore the linear decay constraint and try to model Q(f) in discrete time series then we think of doing it as follows:\\
+
+ Q(f) =   \( \overset{m}{\underset{k=1}{\sum}} \left (   \frac{1}{2} \overset{n}{\underset{i,j=1}{\sum}} \underset{e \in E}{\sum} \frac{1}{\delta(e,t_k)} \underset{ \{v_i(t_k), v_j(t_k) \}{ \subseteq w(e,t_k)}}{\sum}  \left \|  \frac{f_i(t_i)}{\sqrt{d(v_i,t_k)}} - \frac{f_j(t_i)}{\sqrt{d(v_j,t_k)}}  \right \|^{2} \right ) \) \\   \(  + \hspace{3.5cm}   \overset{m}{\underset{k=1}{\sum}} \left( \mu \overset{n}{\underset{i=1}{\sum}} \left\|f_i(t_k) - y_i(t_k)\right\|^{2} \right )   \)   \\
+
+where \(m\) is the number of snapshots we took of the data over time.\\
+
+This is where we stand up till now and this wish to include this linear decay over time in the above framework. 
+
+\begin{thebibliography}{9}
+
+\bibitem{lamport94}
+  Bu, Jiajun and Tan, Shulong and Chen, Chun and Wang, Can and Wu, Hao and Zhang, Lijun and He, Xiaofei,
+  \emph{Music recommendation by unified hypergraph: combining social media information and music content}.
+ In Proceedings of the international conference on Multimedia (MM '10). ACM, New York, NY, USA, 391-400.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,97 @@
+function[F] = HyperTemporalRecom(H, label, test, Alpha, W, k, mu, gamma, J_user)
+
+% Initialization
+Y_0 = label;
+Alpha = 0.1;
+
+for t = 1:k
+    D_e(:,t) = sum(H(:,:,t), 1);
+    D_v(:,t) = sum(H(:,:,t), 2)';
+end
+
+% Optimize F and alpha using Alternate Optimization.
+F = AlternateOptF(H, D_e, D_v, W, Y_0, Alpha, k, mu, gamma, J_user);
+
+function[F] = AlternateOptF(H, D_e, D_v, W, Y, Alpha, k, mu, gamma, J_user)
+
+[m, n] = size(H(:,:,1)); 
+
+for t = 1:k
+    tmp = zeros(m, n);
+    for i = 1 : n
+        if D_e(i, t) ~= 0
+            tmp(:, i) = H(:, i, t) * sqrt(W(i, t)) / sqrt(D_e(i, t));
+        end
+    end
+    S(:,:,t) = tmp * tmp'; % Delta_k
+    for i = 1 : m
+        for j = 1 : m
+            if S(i, j, t) ~=0
+                S(i, j, t) = S(i, j, t) / sqrt(D_v(i, t)) / sqrt(D_v(j, t));
+            end
+        end
+    end
+end
+
+F = Y;
+
+for i = 1 : 10000
+    F_old = F;
+    
+    % Optimizing all the F_t for t = {1...k}.
+    for t = 2:k
+        F(:,t) = (S(:,:,t) - (mu + gamma) * eye(size(S(:,:,t)))) * ...
+            F_old(:,t) + mu * Y(:,t) + gamma * Y(:,t-1) ...
+            + Alpha * J_user;
+    end
+    
+    % Optimizing for the Alpha.
+    %Alpha = (1 / (k-1)) * sum(F(:,2:size(F,2)) - F(:,1:(size(F,2)-1)),2) / J_user;
+    
+    if max(abs(F(:) - F_old(:))) < 0.1        
+        break
+    end
+    
+    if i == 10000
+        F_old
+    end
+    
+end
+
+F
+%F_old
+if i == 10000
+    disp('OptimizeF didn''t converge!')
+end
+
+function[F] = OptimizeF(H, D_e, D_v, W, Y, alpha)
+
+[m, n] = size(H);
+tmp = zeros(m, n);
+for i = 1 : n
+    if D_e(i) ~= 0
+        tmp(:, i) = H(:, i) * sqrt(W(i)) / sqrt(D_e(i));
+    end
+end
+S = tmp * tmp';
+for i = 1 : m
+    for j = 1 : m
+        if S(i, j) ~=0
+            S(i, j) = S(i, j) / sqrt(D_v(i)) / sqrt(D_v(j));
+        end
+    end
+end
+
+F = Y;
+for i = 1 : 10000
+    F_old = F;
+    F = alpha * S * F + (1 - alpha) * Y;
+    
+    if max(abs(F - F_old)) < 1e-9
+        break
+    end
+end
+
+if i == 10000
+    disp('OptimizeF didn''t converge!')
+end
